@@ -1,0 +1,7 @@
+<app-imagenes [imagen]="producto.images['0']"></app-imagenes>
+<h2>{{ producto.price | currency : "PEN " }}</h2>
+<p>{{ producto.title }}</p>
+<p>{{ producto.id }}</p>
+<p>{{ producto.IGV | currency : "PEN " }}</p>
+<button (click)="aniadirCarrito(producto)">Agregar al Carrito</button>
+<button (click)="mostrarProducto(producto)">Detalles</button>

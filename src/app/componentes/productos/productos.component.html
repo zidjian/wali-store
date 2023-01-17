@@ -1,0 +1,27 @@
+<button (click)="crearProducto()">Crear</button>
+<button (click)="showProduct(3425)">No encontrado</button>
+
+<div class="producto_grid">
+    <app-producto
+        (producto_aniadido)="agregarCarrito($event)"
+        (mostrar_producto)="showProduct($event)"
+        [producto]="producto"
+        *ngFor="let producto of productos"
+    ></app-producto>
+</div>
+<button (click)="cargarMas()">Cargar Más</button>
+
+<div class="producto_detalle" [class.activo]="mostrar_producto">
+    <button (click)="toggleProduct()">Close</button>
+    <p>{{estado_producto}}</p>
+    <h2>{{ producto_elegido.title }}</h2>
+
+    <swiper [config]="config">
+        <ng-template swiperSlide *ngFor="let img of producto_elegido.images">
+            <app-imagenes [imagen]="img"></app-imagenes>
+        </ng-template>
+    </swiper>
+    <p>{{ producto_elegido.description }}</p>
+    <button class="btn btn_alert" (click)="eliminarProducto()">Eliminar</button>
+    <button class="btn btn_warning" (click)="actualizarProducto()">Editar</button>
+</div>
